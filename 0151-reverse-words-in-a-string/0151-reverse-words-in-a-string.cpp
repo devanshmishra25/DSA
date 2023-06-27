@@ -1,26 +1,28 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        int n = s.size();
-        int i = 0 ;
-        string ans = "";
+        // Use stringstream to split the input string into words
+        stringstream ss(s);
+        string word;
+        vector<string> words;
         
-        while(  i < n )
-        {
-            while( i < n and s[i] == ' ')
-            i++;
-            if( i >= n)
-            break;
-            int j = i + 1;
-            while( j < n and s[j]  != ' ')
-            j++;
-            string add = s.substr( i , j -i);
-            if(ans == "")
-            ans = add;
-            else
-            ans = add + " " + ans;
-            i = j+ 1;
+        // Extract words from the stringstream
+        while (ss >> word) {
+            words.push_back(word);
         }
-        return ans;
+        
+        // Reverse the order of words
+        reverse(words.begin(), words.end());
+        
+        // Concatenate the reversed words with a single space in between
+        string result;
+        for (const string& w : words) {
+            if (!result.empty()) {
+                result += " ";
+            }
+            result += w;
+        }
+        
+        return result;
     }
 };
