@@ -3,6 +3,8 @@ public:
     void moveZeroes(vector<int>& a){
         int j = -1;
         int n = a.size();
+        
+    
         for(int i = 0; i<n; i++){
             if(a[i] == 0){
                 j = i;
